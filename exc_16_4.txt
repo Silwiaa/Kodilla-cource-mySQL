@@ -1,0 +1,18 @@
+Lista zadań z tabeli ISSUESS z dołączonymi do nich nazwami list zadań z tabeli ISSUESLISTS:
+
+SELECT i.SUMMARY as TASK_NAME, isl.NAME as TASK_TYPE
+FROM ISSUES i
+JOIN ISSUELISTS isl ON i.ISSUESLIST_ID = isl.ID
+------------------------------------------------------
+Lista zadań z tabeli ISSUESS z przypisanymi do nich użytkownikami z tabeli USERS:
+
+SELECT i.SUMMARY as TASK_NAME, u.ID as USER_ID
+FROM ISSUES i
+JOIN USERS ON i.USER_ID_ASSIGNED = u.ID
+------------------------------------------------------
+Imiona i nazwiska użytkowników posiadających zadania, wraz z informacją o ilości zadań, które są do nich przypisane:
+
+SELECT u.FIRSTANE, u.LASTNAME, COUNT(*) AS TASK_QUANTITY
+FROM ISSUES i
+JOIN USERS u ON i.USER_ID_ASSIGNED = u.ID
+GROUP BY u.ID
