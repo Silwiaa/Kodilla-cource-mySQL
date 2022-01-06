@@ -1,0 +1,72 @@
+CREATE TABLE ISSUELISTS
+(
+ID SERIAL PRIMARY KEY,
+NAME VARCHAR(100)
+);
+--------------------------------------------
+CREATE TABLE ISSUES
+(
+ID SERIAL PRIMARY KEY,
+ISSUELIST_ID BIGINT UNSIGNED NOT NULL,
+SUMMARY VARCHAR(100),
+DESCRIPTION VARCHAR(1024),
+USER_ID_ASSIGNED BIGINT UNSIGNED NOT NULL,
+FOREIGN KEY(ISSUELIST_ID) REFERENCES ISSUELISTS(ID),
+FOREIGN KEY(USER_ID_ASSIGNED) REFERENCES USERS(ID)
+);
+--------------------------------------------
+INSERT INTO ISSUELISTS(NAME)
+VALUES ('ToDO');
+
+INSERT INTO ISSUELISTS(NAME)
+VALUES ('In progress');
+
+INSERT INTO ISSUELISTS(NAME)
+VALUES ('Done');
+--------------------------------------------
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (1, 'Task 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 5);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (1, 'Task 2', 'Donec cursus at tortor malesuada molestie.', 6);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (1, 'Task 3', 'Etiam sem ligula, fringilla vel commodo vel, condimentum ut ipsum.', 7);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (1, 'Task 4', 'Cras egestas tellus nec tortor aliquam faucibus.', 8);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (1, 'Task 5', 'Etiam mi est, elementum ut turpis vel, mattis volutpat sapien.', 9);
+--------------------------------------------
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (2, 'Task 1', 'Integer semper lectus eget lacus lobortis vehicula.', 5);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (2, 'Task 2', 'Sed laoreet, sem ut faucibus eleifend, libero.', 6);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (2, 'Task 3', 'Maximus malesuada erat odio nec urna.', 7);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (2, 'Task 4', 'Curabitur interdum rhoncus semper.', 8);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (2, 'Task 5', 'Integer et eros id augue eleifend pharetra.', 9);
+--------------------------------------------
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (3, 'Task 1', 'Orci varius natoque penatibus et magnis', 5);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (3, 'Task 2', 'Dis parturient montes, nascetur ridiculus mus.', 6);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (3, 'Task 3', 'Maximus malesuada erat odio nec urna.', 7);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (3, 'Task 4', 'Duis laoreet augue ut vestibulum blandit.', 8);
+
+INSERT INTO ISSUES(ISSUELIST_ID BIGINT, SUMMARY, DESCRIPTION, DESCRIPTION)
+VALUES (3, 'Task 5', 'Pellentesque quis purus sit amet odio faucibus aliquam.', 9);
+--------------------------------------------
+COMMIT;
